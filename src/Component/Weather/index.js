@@ -3,7 +3,7 @@ import React from 'react';
 
 //const API_CITIES ='http://api.openweathermap.org/data/2.5/weather?q={cityName}&APPID={apiKey}';
 
-const API_CITIES = 'http://localhost:27017/weather-crawlers,cities'; //weather 할때 썼던 주소
+const API_CITIES = 'http://localhost:8080/weather-crawler/available-cities'; //weather 할때 썼던 주소
 //const API_CITIES = '';
 
 class Weather extends React.Component {
