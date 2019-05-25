@@ -1,14 +1,13 @@
 import React from 'react';
-
-
-//const API_CITIES ='http://api.openweathermap.org/data/2.5/weather?q={cityName}&APPID={apiKey}';
+import { Link } from 'react-router-dom';
+import Info from './Info';
 
 const API_CITIES = 'http://localhost:8080/weather-crawler/available-cities'; //weather 할때 썼던 주소
-//const API_CITIES = '';
 
+let value = '0';
 class Weather extends React.Component {
     state = {
-        cities : null
+        cities : null,
     };
 
     async componentDidMount(){
@@ -17,22 +16,19 @@ class Weather extends React.Component {
             .then(res => res.json())
             .then(data => data);
 
-        console.log(city_list);
 
         this.setState({
             cities: city_list
         });
-//        console.log('CDM!! ');
-//
-//        console.log(this.state.foo);
-//
-//        this.setState({
-//            foo: 'HELLO WORLD'
-//        });
-//
-//        console.log(this.state.foo);
     }
 
+    NumberDescriber({item}) {
+        console.log("this");
+        if (value === '0') return (<Info city={item}/>);
+    }
+    handleClick(hell) {
+        console.log(hell);
+    }
     render(){
         const {cities} = this.state;
 
@@ -41,15 +37,30 @@ class Weather extends React.Component {
         }
         return (
             <div>
+
                 <ul>
                     {cities.map(item =>{
-                        return <li key= {item}>{item}</li>;
+                        return <ul key= {item}>
+                            <li><button onClick={ this.handleClick.bind("hell") }>
+                                {item}
+                            </button>
+                            </li>
+                            <div>
+                                {
+                                    this.NumberDescriber({item})
+                                }
+                            </div>
+                        </ul>;
+
                      })}
                 </ul>
+
             </div>
         );
 
     }
 }
+class info extends React.Component {
 
+}
 export default Weather;
