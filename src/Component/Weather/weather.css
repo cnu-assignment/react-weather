@@ -1,0 +1,36 @@
+.weather {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.weather-list {
+}
+
+.weather-cities button{
+    font-size: 2em;
+    padding: 2% 2% 2% 2%
+}
+
+/* Today weather */
+.weather-today {
+}
+.weather-choose {
+    font-size: 2em;
+}
+.weather-city {
+    font-size: 3em;
+
+}
+
+.weather-today-meta {
+    align-items: center;
+}
+.weather-main {
+    text-align: center;
+    font-size: 2em;
+}
+.weather-temp {
+    order: 1;
+    font-size: 2em;
+}

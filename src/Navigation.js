@@ -1,12 +1,16 @@
 import React from "react";
 import { Link,NavLink } from 'react-router-dom';
+import './Navigation.css';
 
 const Navigation = () =>{
     return(
-     <div>
-        <NavLink to="/">Home</NavLink>
-
-        <Link to="/info" >Info</Link>
+     <div className="nav-header">
+         <span>
+             <NavLink to="/">Home</NavLink>
+         </span>
+         <span>
+            <Link to="/weather">Weather</Link>
+         </span>
       </div>
     );
 };

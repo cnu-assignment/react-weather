@@ -1,0 +1,10 @@
+.nav-header {
+    font-size: 2em;
+    display: block;
+    background-color: #dddddd;
+}
+.nav-header span{
+    color: white;
+
+    padding: 2% 2% 2% 2%;
+}

@@ -1,66 +1,53 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Info from './Info';
+import { Switch, Route, withRouter } from 'react-router';
+import List from './List';
+import NestedInfo from './NestedInfo'
+import './weather.css';
 
-const API_CITIES = 'http://localhost:8080/weather-crawler/available-cities'; //weather 할때 썼던 주소
 
-let value = '0';
+const API_CITIES = 'http://localhost:8080/weather-crawler/available-cities';
+
 class Weather extends React.Component {
-    state = {
-        cities : null,
-    };
 
-    async componentDidMount(){
+    constructor(props) {
+        super(props);
+        this.state = {cities: [], city:"Daejeon"}
 
-        const city_list = await fetch(API_CITIES)
+    }
+
+    async componentDidMount(e) {
+
+        const cities = await fetch(API_CITIES)
             .then(res => res.json())
             .then(data => data);
 
-
         this.setState({
-            cities: city_list
+            cities
         });
     }
 
-    NumberDescriber({item}) {
+
+    changeFromChild(item) {
         console.log("this");
-        if (value === '0') return (<Info city={item}/>);
-    }
-    handleClick(hell) {
-        console.log(hell);
-    }
-    render(){
-        const {cities} = this.state;
+        this.setState(
+            {city: item}
+        )
+    };
 
-        if(!cities){
-            return (<div>Loading...</div>);
-        }
+    render() {
+        const { match } = this.props;
+        const { cities } = this.state;
+        const { city } = this.state;
+
         return (
-            <div>
-
-                <ul>
-                    {cities.map(item =>{
-                        return <ul key= {item}>
-                            <li><button onClick={ this.handleClick.bind("hell") }>
-                                {item}
-                            </button>
-                            </li>
-                            <div>
-                                {
-                                    this.NumberDescriber({item})
-                                }
-                            </div>
-                        </ul>;
-
-                     })}
-                </ul>
-
+            <div className="weather">
+                <Switch>
+                    <Route exact path={match.path} render={() => <List cities={cities} city={city} changeFromChild={this.changeFromChild.bind(this)}/>} />
+                    <Route path={`${match.path}/:cityId`} component={NestedInfo} />
+                </Switch>
             </div>
         );
-
-    }
+    };
 }
-class info extends React.Component {
 
-}
-export default Weather;
+export default withRouter(Weather);
