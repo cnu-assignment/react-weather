@@ -5,7 +5,11 @@
 
 > 201702019 박채연
 
-## 사전 준비
-- clone 받을 repository [[weather-crawler](https://github.com/example0312/weather-crawler)]
-## 과제 목표
+## Dependency
+- API Server : [[weather-crawler](https://github.com/example0312/weather-crawler)]
+
+## Goal
 - 도시를 누르면 날씨가 나오게 함
+
+## Result
+![img](react-weather.gif)
