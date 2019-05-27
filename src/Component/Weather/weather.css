@@ -8,6 +8,11 @@
 }
 
 .weather-cities button{
+    background-color: transparent !important;
+    background-image: none !important;
+    border-color: transparent;
+    border: none;
+
     font-size: 2em;
     padding: 2% 2% 2% 2%
 }
